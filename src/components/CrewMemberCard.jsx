@@ -1,6 +1,6 @@
 /**
  * GRAND LINE LEDGER - CrewMemberCard Component
- * Renders individual pirate cards with avatar, bounty, Haki rank, and net balance
+ * Modern fintech-inspired member card with clean financial layout
  */
 import React from 'react';
 import { useApp } from '../context/AppContext';
@@ -24,103 +24,94 @@ export default function CrewMemberCard({
   const isSettled = !isCreditor && !isDebtor;
   const isExcessiveDebt = isDebtor && Math.abs(balance) >= excessiveThreshold;
 
+  const cardClass = `member-card crew-card ${isCreditor ? 'member-card--creditor' : isDebtor ? 'member-card--debtor' : ''}`;
+
+  const balanceDisplay = isCreditor
+    ? `+${formatBeli(balance, currency)}`
+    : isDebtor
+    ? `-${formatBeli(Math.abs(balance), currency)}`
+    : formatBeli(0, currency);
+
+  const balanceColorClass = isCreditor
+    ? 'member-card__stat-value--positive'
+    : isDebtor
+    ? 'member-card__stat-value--negative'
+    : 'member-card__stat-value--neutral';
+
   return (
-    <div className={`parchment-card crew-card ${isDebtor ? 'debt-border' : isCreditor ? 'credit-border' : ''}`}>
-      <div className="flex-between align-center" style={{ marginBottom: '0.75rem' }}>
-        <div className="flex-row gap-sm align-center">
-          <div className="crew-avatar" title={member.name}>
+    <div className={cardClass}>
+      {/* Header: Avatar + Name + Rank */}
+      <div className="member-card__header">
+        <div className="member-card__identity">
+          <div className="member-card__avatar">
             {member.avatar || '🏴‍☠️'}
           </div>
           <div>
-            <h4 style={{ margin: 0, fontFamily: 'var(--font-pirate)', fontSize: '1.3rem', color: 'var(--text-primary-dark)' }}>
-              {member.name}
-            </h4>
-            <div style={{ fontSize: '0.82rem', color: 'var(--text-secondary-dark)' }}>
-              {member.role || 'Deckhand'}
-            </div>
+            <h4 className="member-card__name">{member.name}</h4>
+            <div className="member-card__role">{member.role || member.nickname || 'Deckhand'}</div>
           </div>
         </div>
 
-        <div className="haki-badge" title={haki.desc}>
+        <div className="member-card__rank-badge" title={haki.desc}>
           {haki.badge} {haki.title}
         </div>
       </div>
 
-      {/* Balance Summary Pill */}
-      <div
-        style={{
-          background: isCreditor
-            ? 'rgba(46, 204, 113, 0.15)'
-            : isDebtor
-            ? 'rgba(231, 76, 60, 0.15)'
-            : 'rgba(122, 86, 38, 0.08)',
-          border: `1px solid ${
-            isCreditor ? 'var(--credit-green)' : isDebtor ? 'var(--debt-red)' : 'var(--border-parchment)'
-          }`,
-          borderRadius: '8px',
-          padding: '0.6rem 0.8rem',
-          margin: '0.75rem 0',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center'
-        }}
-      >
-        <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary-dark)' }}>Net Balance:</span>
-        <span
-          style={{
-            fontFamily: 'var(--font-heading)',
-            fontWeight: 'bold',
-            fontSize: '1.1rem',
-            color: isCreditor ? 'var(--credit-green)' : isDebtor ? 'var(--debt-red)' : 'var(--text-primary-dark)'
-          }}
-        >
-          {isCreditor ? `+${formatBeli(balance, currency)}` : isDebtor ? `-${formatBeli(Math.abs(balance), currency)}` : `${formatBeli(0, currency)}`}
-        </span>
-      </div>
-
-      {/* Detailed numbers */}
-      <div className="flex-between" style={{ fontSize: '0.82rem', color: 'var(--text-secondary-dark)', marginBottom: '0.8rem' }}>
-        <div>
-          <span>Total Paid: </span>
-          <strong style={{ color: 'var(--gold-primary)' }}>{formatBeli(totalPaid, currency)}</strong>
+      {/* Financial Summary: Paid / Share / Net Balance */}
+      <div className="member-card__financials">
+        <div className="member-card__stat">
+          <div className="member-card__stat-label">Paid</div>
+          <div className="member-card__stat-value member-card__stat-value--paid">
+            {formatBeli(totalPaid, currency)}
+          </div>
         </div>
-        <div>
-          <span>Total Share: </span>
-          <strong style={{ color: 'var(--text-primary-dark)' }}>{formatBeli(totalOwed, currency)}</strong>
+        <div className="member-card__stat">
+          <div className="member-card__stat-label">Share</div>
+          <div className="member-card__stat-value member-card__stat-value--share">
+            {formatBeli(totalOwed, currency)}
+          </div>
+        </div>
+        <div className="member-card__stat">
+          <div className="member-card__stat-label">Net</div>
+          <div className={`member-card__stat-value ${balanceColorClass}`}>
+            {balanceDisplay}
+          </div>
         </div>
       </div>
 
-      {/* Status & Actions */}
-      <div className="flex-between align-center" style={{ paddingTop: '0.5rem', borderTop: '1px dashed var(--border-parchment)' }}>
+      {/* Footer: Status + Actions */}
+      <div className="member-card__footer">
         <div>
-          {isCreditor && <span className="badge badge-credit">RECEIVES SHARE</span>}
-          {isDebtor && <span className="badge badge-debt">OWES CREW</span>}
+          {isCreditor && (
+            <span className="member-card__status-badge member-card__status-badge--credit badge">
+              RECEIVES SHARE
+            </span>
+          )}
+          {isDebtor && !isExcessiveDebt && (
+            <span className="member-card__status-badge member-card__status-badge--debt badge">
+              OWES CREW
+            </span>
+          )}
           {isExcessiveDebt && (
             <span
-              className="badge"
-              style={{
-                background: '#e74c3c',
-                color: '#fff',
-                marginLeft: '6px',
-                fontWeight: 'bold',
-                fontSize: '0.72rem',
-                border: '1px solid #c0392b',
-                boxShadow: '0 0 6px rgba(231,76,60,0.5)',
-                display: 'inline-block'
-              }}
-              title={`Nami's Warning: Debt exceeds ฿${excessiveThreshold}!`}
+              className="member-card__status-badge member-card__status-badge--warning badge"
+              title={`Debt exceeds ${currency}${excessiveThreshold}`}
             >
               🍊 NAMI'S DEBT WARNING
             </span>
           )}
-          {isSettled && <span className="badge badge-neutral">BALANCED</span>}
+          {isSettled && (
+            <span className="member-card__status-badge member-card__status-badge--balanced badge">
+              BALANCED
+            </span>
+          )}
         </div>
 
-        <div className="flex-row gap-xs">
+        <div className="member-card__actions">
           {onViewDetails && (
             <button
               type="button"
-              className="btn btn-secondary btn-sm"
+              className="member-card__action-btn member-card__action-btn--ledger"
               onClick={() => onViewDetails(member)}
               title="View member ledger"
             >
@@ -130,11 +121,11 @@ export default function CrewMemberCard({
           {onRemove && (
             <button
               type="button"
-              className="btn btn-danger btn-sm"
+              className="member-card__action-btn member-card__action-btn--remove btn-danger"
               onClick={() => onRemove(member.id)}
-              title="Walk the plank (Remove)"
+              title="Remove member"
             >
-              Plank
+              Remove
             </button>
           )}
         </div>
