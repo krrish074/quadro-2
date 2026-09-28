@@ -126,15 +126,15 @@ export default function Crew({ onOpenNewCrewModal }) {
       />
 
       {/* Crew Overview Card */}
-      <div className="parchment-card" style={{ marginBottom: '1.5rem', background: 'linear-gradient(135deg, rgba(212,160,23,0.1), rgba(15,28,49,0.8))' }}>
+      <div className="card-ocean surface-ocean" style={{ marginBottom: '1.5rem', background: 'linear-gradient(135deg, rgba(212,160,23,0.15), rgba(15,28,49,0.95))', padding: '1.25rem 1.5rem' }}>
         <div className="flex-between align-center flex-wrap gap-md">
           <div className="flex-row gap-md align-center">
             <div style={{ fontSize: '2.5rem' }}>{currentCrew.logo || '☠️'}</div>
             <div>
-              <h3 style={{ margin: 0, fontFamily: 'var(--font-pirate)', fontSize: '1.8rem', color: 'var(--gold-light)' }}>
+              <h3 style={{ margin: 0, fontFamily: 'var(--font-pirate)', fontSize: '1.8rem', color: 'var(--gold-bright)' }}>
                 {currentCrew.name}
               </h3>
-              <p style={{ margin: '0.2rem 0 0 0', color: 'var(--text-muted)', fontSize: '0.88rem' }}>
+              <p style={{ margin: '0.2rem 0 0 0', color: 'var(--text-secondary-light)', fontSize: '0.9rem' }}>
                 Formed on {currentCrew.createdDate || 'Grand Line'} • {members.length} Pirates Enlisted
               </p>
             </div>
@@ -191,7 +191,7 @@ export default function Crew({ onOpenNewCrewModal }) {
         <form onSubmit={handleEnlistSubmit}>
           {/* Quick Presets */}
           <div style={{ marginBottom: '1.25rem' }}>
-            <label style={{ display: 'block', fontSize: '0.85rem', color: 'var(--gold-light)', marginBottom: '0.5rem' }}>
+            <label style={{ display: 'block', fontSize: '0.85rem', color: 'var(--text-primary-dark)', marginBottom: '0.5rem' }}>
               Grand Line Legendary Presets:
             </label>
             <div className="flex-row gap-xs flex-wrap">
@@ -337,25 +337,25 @@ export default function Crew({ onOpenNewCrewModal }) {
               <div>
                 {/* Stats summary */}
                 <div className="grid grid-3 gap-sm" style={{ marginBottom: '1.25rem' }}>
-                  <div style={{ background: 'rgba(0,0,0,0.25)', padding: '0.75rem', borderRadius: '8px', textAlign: 'center' }}>
-                    <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Total Paid</div>
+                  <div style={{ background: 'rgba(122,86,38,0.08)', padding: '0.75rem', borderRadius: '8px', textAlign: 'center' }}>
+                    <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary-dark)' }}>Total Paid</div>
                     <div style={{ fontFamily: 'var(--font-pirate)', fontSize: '1.3rem', color: 'var(--gold-primary)' }}>
                       {formatBeli(paid, currency)}
                     </div>
                   </div>
-                  <div style={{ background: 'rgba(0,0,0,0.25)', padding: '0.75rem', borderRadius: '8px', textAlign: 'center' }}>
-                    <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Total Share</div>
-                    <div style={{ fontFamily: 'var(--font-pirate)', fontSize: '1.3rem', color: 'var(--text-parchment)' }}>
+                  <div style={{ background: 'rgba(122,86,38,0.08)', padding: '0.75rem', borderRadius: '8px', textAlign: 'center' }}>
+                    <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary-dark)' }}>Total Share</div>
+                    <div style={{ fontFamily: 'var(--font-pirate)', fontSize: '1.3rem', color: 'var(--text-primary-dark)' }}>
                       {formatBeli(owed, currency)}
                     </div>
                   </div>
-                  <div style={{ background: 'rgba(0,0,0,0.25)', padding: '0.75rem', borderRadius: '8px', textAlign: 'center' }}>
-                    <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Net Balance</div>
+                  <div style={{ background: 'rgba(122,86,38,0.08)', padding: '0.75rem', borderRadius: '8px', textAlign: 'center' }}>
+                    <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary-dark)' }}>Net Balance</div>
                     <div
                       style={{
                         fontFamily: 'var(--font-pirate)',
                         fontSize: '1.3rem',
-                        color: bal > 0.01 ? 'var(--credit-green)' : bal < -0.01 ? 'var(--debt-red)' : 'var(--text-muted)'
+                        color: bal > 0.01 ? 'var(--credit-green)' : bal < -0.01 ? 'var(--debt-red)' : 'var(--text-secondary-dark)'
                       }}
                     >
                       {bal > 0.01 ? `+${formatBeli(bal, currency)}` : bal < -0.01 ? `-${formatBeli(Math.abs(bal), currency)}` : formatBeli(0, currency)}
@@ -365,18 +365,18 @@ export default function Crew({ onOpenNewCrewModal }) {
 
                 {/* Debts list for this member */}
                 <div style={{ marginBottom: '1.25rem' }}>
-                  <h4 style={{ fontFamily: 'var(--font-pirate)', color: 'var(--gold-light)', margin: '0 0 0.5rem 0' }}>
+                  <h4 style={{ fontFamily: 'var(--font-pirate)', color: 'var(--text-primary-dark)', margin: '0 0 0.5rem 0' }}>
                     ⚖️ Active Debt Status:
                   </h4>
                   {memberDebtsOwed.length === 0 && memberDebtsReceivable.length === 0 ? (
-                    <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>No outstanding debts with crewmates.</p>
+                    <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary-dark)' }}>No outstanding debts with crewmates.</p>
                   ) : (
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
                       {memberDebtsOwed.map(d => {
                         const toMember = members.find(m => m.id === d.creditorId);
                         return (
-                          <div key={d.creditorId} className="flex-between align-center" style={{ background: 'rgba(231,76,60,0.1)', padding: '0.5rem 0.8rem', borderRadius: '6px', border: '1px solid rgba(231,76,60,0.3)' }}>
-                            <span style={{ fontSize: '0.85rem', color: 'var(--debt-red)' }}>
+                          <div key={d.creditorId} className="flex-between align-center" style={{ background: 'rgba(231,76,60,0.12)', padding: '0.5rem 0.8rem', borderRadius: '6px', border: '1px solid rgba(231,76,60,0.35)' }}>
+                            <span style={{ fontSize: '0.85rem', color: 'var(--debt-red)', fontWeight: 'bold' }}>
                               Owes {toMember ? toMember.name : 'Crewmate'}
                             </span>
                             <strong style={{ color: 'var(--debt-red)' }}>{formatBeli(d.amount, currency)}</strong>
@@ -386,8 +386,8 @@ export default function Crew({ onOpenNewCrewModal }) {
                       {memberDebtsReceivable.map(d => {
                         const fromMember = members.find(m => m.id === d.debtorId);
                         return (
-                          <div key={d.debtorId} className="flex-between align-center" style={{ background: 'rgba(46,204,113,0.1)', padding: '0.5rem 0.8rem', borderRadius: '6px', border: '1px solid rgba(46,204,113,0.3)' }}>
-                            <span style={{ fontSize: '0.85rem', color: 'var(--credit-green)' }}>
+                          <div key={d.debtorId} className="flex-between align-center" style={{ background: 'rgba(46,204,113,0.12)', padding: '0.5rem 0.8rem', borderRadius: '6px', border: '1px solid rgba(46,204,113,0.35)' }}>
+                            <span style={{ fontSize: '0.85rem', color: 'var(--credit-green)', fontWeight: 'bold' }}>
                               Receives from {fromMember ? fromMember.name : 'Crewmate'}
                             </span>
                             <strong style={{ color: 'var(--credit-green)' }}>{formatBeli(d.amount, currency)}</strong>
@@ -400,14 +400,14 @@ export default function Crew({ onOpenNewCrewModal }) {
 
                 {/* Involved expenses */}
                 <div>
-                  <h4 style={{ fontFamily: 'var(--font-pirate)', color: 'var(--gold-light)', margin: '0 0 0.5rem 0' }}>
+                  <h4 style={{ fontFamily: 'var(--font-pirate)', color: 'var(--text-primary-dark)', margin: '0 0 0.5rem 0' }}>
                     💰 Associated Voyage Expenses ({memberExpenses.length}):
                   </h4>
                   <div style={{ maxHeight: '200px', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
                     {memberExpenses.map(e => (
-                      <div key={e.id} className="flex-between align-center" style={{ background: 'rgba(0,0,0,0.2)', padding: '0.4rem 0.6rem', borderRadius: '4px', fontSize: '0.85rem' }}>
-                        <span>{e.name || e.description} ({e.date})</span>
-                        <strong style={{ color: 'var(--gold-light)' }}>{formatBeli(e.amount, currency)}</strong>
+                      <div key={e.id} className="flex-between align-center" style={{ background: 'rgba(122,86,38,0.08)', padding: '0.4rem 0.6rem', borderRadius: '4px', fontSize: '0.85rem' }}>
+                        <span style={{ color: 'var(--text-primary-dark)' }}>{e.name || e.description} ({e.date})</span>
+                        <strong style={{ color: 'var(--gold-primary)' }}>{formatBeli(e.amount, currency)}</strong>
                       </div>
                     ))}
                   </div>

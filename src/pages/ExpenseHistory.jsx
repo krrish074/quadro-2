@@ -201,10 +201,10 @@ export default function ExpenseHistory({ onOpenNewCrewModal }) {
 
         {/* Filter Summary Pill */}
         <div className="flex-between align-center" style={{ marginTop: '1rem', paddingTop: '0.75rem', borderTop: '1px dashed var(--border-parchment)' }}>
-          <span style={{ fontSize: '0.88rem', color: 'var(--text-muted)' }}>
+          <span style={{ fontSize: '0.88rem', color: 'var(--text-secondary-dark)' }}>
             Showing <strong>{filteredExpenses.length}</strong> of {expenses.length} expenses
           </span>
-          <span style={{ fontSize: '0.95rem' }}>
+          <span style={{ fontSize: '0.95rem', color: 'var(--text-primary-dark)' }}>
             Filtered Subtotal: <strong style={{ color: 'var(--gold-primary)', fontFamily: 'var(--font-pirate)', fontSize: '1.25rem' }}>
               {formatBeli(totalFilteredSum, currency)}
             </strong>
@@ -224,10 +224,10 @@ export default function ExpenseHistory({ onOpenNewCrewModal }) {
       ) : filteredExpenses.length === 0 ? (
         <div className="parchment-card text-center" style={{ padding: '3rem 1rem' }}>
           <div style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>🔍</div>
-          <h4 style={{ fontFamily: 'var(--font-pirate)', color: 'var(--gold-light)' }}>
+          <h4 style={{ fontFamily: 'var(--font-pirate)', color: 'var(--text-primary-dark)' }}>
             No Matching Expenses Found
           </h4>
-          <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>
+          <p style={{ color: 'var(--text-secondary-dark)', fontSize: '0.9rem' }}>
             Try resetting your search query or filters.
           </p>
           <button

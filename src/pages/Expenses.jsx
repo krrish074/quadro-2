@@ -220,7 +220,7 @@ export default function Expenses({ onOpenNewCrewModal }) {
       <div className="grid grid-2 gap-lg">
         {/* LEFT COLUMN: EXPENSE ENTRY FORM */}
         <div className="parchment-card">
-          <h3 style={{ fontFamily: 'var(--font-pirate)', fontSize: '1.5rem', color: 'var(--gold-light)', margin: '0 0 1.25rem 0' }}>
+          <h3 style={{ fontFamily: 'var(--font-pirate)', fontSize: '1.5rem', color: 'var(--text-primary-dark)', margin: '0 0 1.25rem 0' }}>
             📜 Expense Particulars
           </h3>
 
@@ -305,7 +305,7 @@ export default function Expenses({ onOpenNewCrewModal }) {
             {/* ---------------- PAYER SELECTION ---------------- */}
             <div style={{ marginBottom: '1.5rem', background: 'rgba(0,0,0,0.18)', padding: '0.85rem', borderRadius: '8px' }}>
               <div className="flex-between align-center" style={{ marginBottom: '0.5rem' }}>
-                <label style={{ margin: 0, fontWeight: 'bold', color: 'var(--gold-light)' }}>
+                <label style={{ margin: 0, fontWeight: 'bold', color: 'var(--text-primary-dark)' }}>
                   👑 Who Paid the Bill?
                 </label>
                 <div className="flex-row gap-xs">
@@ -375,7 +375,7 @@ export default function Expenses({ onOpenNewCrewModal }) {
             {/* ---------------- PARTICIPANTS & SPLIT TYPE ---------------- */}
             <div style={{ marginBottom: '1.5rem', background: 'rgba(0,0,0,0.18)', padding: '0.85rem', borderRadius: '8px' }}>
               <div className="flex-between align-center" style={{ marginBottom: '0.65rem' }}>
-                <label style={{ margin: 0, fontWeight: 'bold', color: 'var(--gold-light)' }}>
+                <label style={{ margin: 0, fontWeight: 'bold', color: 'var(--text-primary-dark)' }}>
                   👥 Crew Members Involved ({selectedParticipants.length})
                 </label>
                 <div className="flex-row gap-xs">
@@ -482,10 +482,10 @@ export default function Expenses({ onOpenNewCrewModal }) {
         {/* RIGHT COLUMN: LIVE REAL-TIME LEDGER PREVIEW */}
         <div>
           <div className="parchment-card" style={{ marginBottom: '1.5rem' }}>
-            <h3 style={{ fontFamily: 'var(--font-pirate)', fontSize: '1.5rem', color: 'var(--gold-light)', margin: '0 0 0.5rem 0' }}>
+            <h3 style={{ fontFamily: 'var(--font-pirate)', fontSize: '1.5rem', color: 'var(--text-primary-dark)', margin: '0 0 0.5rem 0' }}>
               ⚖️ Live Impact Preview
             </h3>
-            <p style={{ margin: '0 0 1rem 0', color: 'var(--text-muted)', fontSize: '0.85rem' }}>
+            <p style={{ margin: '0 0 1rem 0', color: 'var(--text-secondary-dark)', fontSize: '0.88rem' }}>
               Calculated balance shift for each crew member before saving
             </p>
 
@@ -505,24 +505,24 @@ export default function Expenses({ onOpenNewCrewModal }) {
                     className="flex-between align-center"
                     style={{
                       padding: '0.6rem 0.85rem',
-                      background: 'rgba(0,0,0,0.22)',
+                      background: 'rgba(122,86,38,0.08)',
                       borderRadius: '8px',
                       borderLeft: `4px solid ${isGainer ? 'var(--credit-green)' : isOwer ? 'var(--debt-red)' : 'var(--border-parchment)'}`
                     }}
                   >
                     <div className="flex-row gap-xs align-center">
                       <span>{member.avatar}</span>
-                      <strong style={{ color: 'var(--text-parchment)' }}>{member.name}</strong>
+                      <strong style={{ color: 'var(--text-primary-dark)' }}>{member.name}</strong>
                     </div>
 
                     <div style={{ textAlign: 'right', fontSize: '0.82rem' }}>
-                      <div>
+                      <div style={{ color: 'var(--text-secondary-dark)' }}>
                         Paid: <strong>{formatBeli(paid, currency)}</strong> | Share: <strong>{formatBeli(owed, currency)}</strong>
                       </div>
                       <div
                         style={{
                           fontWeight: 'bold',
-                          color: isGainer ? 'var(--credit-green)' : isOwer ? 'var(--debt-red)' : 'var(--text-muted)'
+                          color: isGainer ? 'var(--green-credit)' : isOwer ? 'var(--red-debt)' : 'var(--text-secondary-dark)'
                         }}
                       >
                         Net Impact: {isGainer ? '+' : ''}{formatBeli(delta, currency)}
@@ -540,7 +540,8 @@ export default function Expenses({ onOpenNewCrewModal }) {
                 borderTop: '1px dashed var(--border-parchment)',
                 display: 'flex',
                 justifyContent: 'space-between',
-                fontSize: '0.9rem'
+                fontSize: '0.9rem',
+                color: 'var(--text-primary-dark)'
               }}
             >
               <span>Total Recorded Sum:</span>
@@ -551,12 +552,12 @@ export default function Expenses({ onOpenNewCrewModal }) {
           </div>
 
           {/* Quick Guidance Box */}
-          <div className="parchment-card" style={{ background: 'rgba(212, 160, 23, 0.06)' }}>
-            <h4 style={{ fontFamily: 'var(--font-pirate)', color: 'var(--gold-light)', margin: '0 0 0.5rem 0' }}>
+          <div className="card-ocean surface-ocean" style={{ padding: '1.25rem', border: '1px solid rgba(212, 160, 23, 0.45)' }}>
+            <h4 style={{ fontFamily: 'var(--font-pirate)', color: 'var(--gold-bright)', margin: '0 0 0.5rem 0' }}>
               💡 Pirate Navigator Tip
             </h4>
-            <p style={{ margin: 0, fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: '1.5' }}>
-              Equal split divides the bill perfectly among selected pirates. If someone skipped dinner or ordered extra cola, toggle to <strong>Custom Split</strong> to assign exact shares. The ledger guarantees mathematical conservation (Paid = Owed).
+            <p style={{ margin: 0, fontSize: '0.88rem', color: 'var(--text-secondary-light)', lineHeight: '1.5' }}>
+              Equal split divides the bill perfectly among selected pirates. If someone skipped dinner or ordered extra cola, toggle to <strong style={{ color: 'var(--gold-bright)' }}>Custom Split</strong> to assign exact shares. The ledger guarantees mathematical conservation (Paid = Owed).
             </p>
           </div>
         </div>

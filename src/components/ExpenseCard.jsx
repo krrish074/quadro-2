@@ -48,17 +48,17 @@ export default function ExpenseCard({ expense, onEdit, onDelete }) {
             {catMeta.icon}
           </div>
           <div>
-            <h4 style={{ margin: 0, fontSize: '1.15rem', color: 'var(--text-parchment)' }}>
+            <h4 style={{ margin: 0, fontSize: '1.15rem', color: 'var(--text-primary-dark)' }}>
               {description}
             </h4>
-            <div className="flex-row gap-xs align-center" style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '0.2rem' }}>
+            <div className="flex-row gap-xs align-center" style={{ fontSize: '0.82rem', color: 'var(--text-secondary-dark)', marginTop: '0.2rem' }}>
               <span className="badge badge-neutral" style={{ padding: '0.15rem 0.4rem', fontSize: '0.72rem' }}>
                 {catMeta.label}
               </span>
               <span>•</span>
               <span>📅 {formatDate(expense.date)}</span>
               <span>•</span>
-              <span>Paid by <strong>{payerAvatar} {payerName}</strong></span>
+              <span>Paid by <strong style={{ color: 'var(--text-primary-dark)' }}>{payerAvatar} {payerName}</strong></span>
             </div>
           </div>
         </div>
@@ -69,7 +69,7 @@ export default function ExpenseCard({ expense, onEdit, onDelete }) {
             <div style={{ fontFamily: 'var(--font-pirate)', fontSize: '1.6rem', color: 'var(--gold-primary)' }}>
               {formatBeli(expense.amount, currency)}
             </div>
-            <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
+            <div style={{ fontSize: '0.78rem', color: 'var(--text-secondary-dark)' }}>
               {expense.splitType === 'custom' ? 'Custom Split' : `Equal Split (${participantCount} crew)`}
             </div>
           </div>
@@ -117,7 +117,7 @@ export default function ExpenseCard({ expense, onEdit, onDelete }) {
             fontSize: '0.85rem'
           }}
         >
-          <div style={{ fontWeight: 'bold', color: 'var(--gold-light)', marginBottom: '0.5rem' }}>
+          <div style={{ fontWeight: 'bold', color: 'var(--text-primary-dark)', marginBottom: '0.5rem' }}>
             Crew Member Shares:
           </div>
           <div className="grid grid-2 gap-sm">
@@ -135,17 +135,17 @@ export default function ExpenseCard({ expense, onEdit, onDelete }) {
                   className="flex-between align-center"
                   style={{
                     padding: '0.4rem 0.6rem',
-                    background: 'rgba(0,0,0,0.2)',
+                    background: 'rgba(122,86,38,0.08)',
                     borderRadius: '6px',
-                    border: isPayer ? '1px solid rgba(212,160,23,0.4)' : '1px solid transparent'
+                    border: isPayer ? '1px solid rgba(212,160,23,0.5)' : '1px solid transparent'
                   }}
                 >
                   <div className="flex-row gap-xs align-center">
                     <span>{member ? member.avatar : '🏴‍☠️'}</span>
-                    <span>{member ? member.name : pId}</span>
+                    <span style={{ color: 'var(--text-primary-dark)' }}>{member ? member.name : pId}</span>
                     {isPayer && <span className="badge badge-gold" style={{ fontSize: '0.65rem' }}>Payer</span>}
                   </div>
-                  <strong style={{ color: 'var(--text-parchment)' }}>
+                  <strong style={{ color: 'var(--text-primary-dark)' }}>
                     {formatBeli(share, currency)}
                   </strong>
                 </div>
@@ -154,7 +154,7 @@ export default function ExpenseCard({ expense, onEdit, onDelete }) {
           </div>
 
           {expense.notes && (
-            <div style={{ marginTop: '0.6rem', color: 'var(--text-muted)', fontStyle: 'italic' }}>
+            <div style={{ marginTop: '0.6rem', color: 'var(--text-secondary-dark)', fontStyle: 'italic' }}>
               Note: {expense.notes}
             </div>
           )}

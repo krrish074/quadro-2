@@ -32,10 +32,10 @@ export default function CrewMemberCard({
             {member.avatar || '🏴‍☠️'}
           </div>
           <div>
-            <h4 style={{ margin: 0, fontFamily: 'var(--font-pirate)', fontSize: '1.25rem', color: 'var(--gold-light)' }}>
+            <h4 style={{ margin: 0, fontFamily: 'var(--font-pirate)', fontSize: '1.3rem', color: 'var(--text-primary-dark)' }}>
               {member.name}
             </h4>
-            <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+            <div style={{ fontSize: '0.82rem', color: 'var(--text-secondary-dark)' }}>
               {member.role || 'Deckhand'}
             </div>
           </div>
@@ -53,7 +53,7 @@ export default function CrewMemberCard({
             ? 'rgba(46, 204, 113, 0.15)'
             : isDebtor
             ? 'rgba(231, 76, 60, 0.15)'
-            : 'rgba(255, 255, 255, 0.05)',
+            : 'rgba(122, 86, 38, 0.08)',
           border: `1px solid ${
             isCreditor ? 'var(--credit-green)' : isDebtor ? 'var(--debt-red)' : 'var(--border-parchment)'
           }`,
@@ -65,13 +65,13 @@ export default function CrewMemberCard({
           alignItems: 'center'
         }}
       >
-        <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Net Balance:</span>
+        <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary-dark)' }}>Net Balance:</span>
         <span
           style={{
             fontFamily: 'var(--font-heading)',
             fontWeight: 'bold',
             fontSize: '1.1rem',
-            color: isCreditor ? 'var(--credit-green)' : isDebtor ? 'var(--debt-red)' : 'var(--text-parchment)'
+            color: isCreditor ? 'var(--credit-green)' : isDebtor ? 'var(--debt-red)' : 'var(--text-primary-dark)'
           }}
         >
           {isCreditor ? `+${formatBeli(balance, currency)}` : isDebtor ? `-${formatBeli(Math.abs(balance), currency)}` : `${formatBeli(0, currency)}`}
@@ -79,14 +79,14 @@ export default function CrewMemberCard({
       </div>
 
       {/* Detailed numbers */}
-      <div className="flex-between" style={{ fontSize: '0.82rem', color: 'var(--text-muted)', marginBottom: '0.8rem' }}>
+      <div className="flex-between" style={{ fontSize: '0.82rem', color: 'var(--text-secondary-dark)', marginBottom: '0.8rem' }}>
         <div>
           <span>Total Paid: </span>
           <strong style={{ color: 'var(--gold-primary)' }}>{formatBeli(totalPaid, currency)}</strong>
         </div>
         <div>
           <span>Total Share: </span>
-          <strong style={{ color: 'var(--text-parchment)' }}>{formatBeli(totalOwed, currency)}</strong>
+          <strong style={{ color: 'var(--text-primary-dark)' }}>{formatBeli(totalOwed, currency)}</strong>
         </div>
       </div>
 

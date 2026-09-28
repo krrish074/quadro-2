@@ -63,10 +63,10 @@ export default function EmptyState({
       <div style={{ fontSize: '3rem', marginBottom: '1rem', animation: 'float 3s ease-in-out infinite' }}>
         {type === 'no-members' ? '👥' : type === 'no-expenses' ? '📜' : type === 'no-debts' ? '🎉' : '🧭'}
       </div>
-      <h3 style={{ fontFamily: 'var(--font-pirate)', fontSize: '1.8rem', color: 'var(--gold-light)', margin: '0 0 0.5rem 0' }}>
+      <h3 style={{ fontFamily: 'var(--font-pirate)', fontSize: '1.8rem', color: 'var(--text-primary-dark)', margin: '0 0 0.5rem 0' }}>
         {title || 'The Deck is Quiet'}
       </h3>
-      <p style={{ maxWidth: '480px', margin: '0 auto 1.5rem auto', color: 'var(--text-muted)', fontSize: '0.95rem' }}>
+      <p style={{ maxWidth: '480px', margin: '0 auto 1.5rem auto', color: 'var(--text-secondary-dark)', fontSize: '0.95rem' }}>
         {description || 'No entries logged in this voyage yet. Record your first action to update the crew ledger.'}
       </p>
       {onAction && (

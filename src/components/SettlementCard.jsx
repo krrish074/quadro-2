@@ -39,10 +39,10 @@ export default function SettlementCard({ settlement, onPrintInvoice }) {
             ⚓
           </div>
           <div>
-            <div style={{ fontSize: '1.05rem', color: 'var(--text-parchment)' }}>
+            <div style={{ fontSize: '1.05rem', color: 'var(--text-primary-dark)' }}>
               <strong>{payerName}</strong> transferred to <strong>{receiverName}</strong>
             </div>
-            <div className="flex-row gap-xs align-center" style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '0.2rem' }}>
+            <div className="flex-row gap-xs align-center" style={{ fontSize: '0.82rem', color: 'var(--text-secondary-dark)', marginTop: '0.2rem' }}>
               <span>📅 {formatDate(settlement.date)}</span>
               {settlement.method && (
                 <>

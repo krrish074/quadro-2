@@ -10,8 +10,17 @@ label {
   display: block;
   font-weight: 700;
   margin-bottom: var(--space-xs);
-  color: var(--ink-dark);
+  color: var(--text-secondary-light);
   font-size: 0.95rem;
+}
+
+/* Labels on Light / Parchment Surfaces */
+.surface-parchment label,
+.card-parchment label,
+.parchment-card label,
+.modal-box label,
+.form-parchment label {
+  color: var(--text-primary-dark);
 }
 
 input[type="text"],
@@ -29,6 +38,12 @@ textarea {
   font-family: inherit;
   font-size: 0.95rem;
   transition: all var(--trans-fast);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #7a5e3a;
+  opacity: 0.85;
 }
 
 input:focus,

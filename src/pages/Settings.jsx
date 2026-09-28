@@ -78,10 +78,10 @@ export default function Settings() {
         <div>
           {/* Currency Configuration */}
           <div className="parchment-card" style={{ marginBottom: '1.5rem' }}>
-            <h3 style={{ fontFamily: 'var(--font-pirate)', fontSize: '1.5rem', color: 'var(--gold-light)', margin: '0 0 1rem 0' }}>
+            <h3 style={{ fontFamily: 'var(--font-pirate)', fontSize: '1.5rem', color: 'var(--text-primary-dark)', margin: '0 0 1rem 0' }}>
               💰 Denomination Currency
             </h3>
-            <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', marginBottom: '1rem' }}>
+            <p style={{ color: 'var(--text-secondary-dark)', fontSize: '0.88rem', marginBottom: '1rem' }}>
               Choose your preferred financial denomination across all ledgers:
             </p>
 
@@ -93,10 +93,10 @@ export default function Settings() {
                     key={key}
                     className="flex-between align-center"
                     style={{
-                      background: isSelected ? 'rgba(212,160,23,0.18)' : 'rgba(0,0,0,0.2)',
+                      background: isSelected ? 'rgba(212,160,23,0.22)' : 'rgba(122,86,38,0.08)',
                       padding: '0.75rem 1rem',
                       borderRadius: '8px',
-                      border: isSelected ? '1px solid var(--border-gold)' : '1px solid transparent',
+                      border: isSelected ? '1.5px solid var(--border-parchment-dark)' : '1px solid var(--border-parchment)',
                       cursor: 'pointer'
                     }}
                   >
@@ -107,7 +107,7 @@ export default function Settings() {
                         checked={isSelected}
                         onChange={() => handleCurrencyChange(curr.symbol)}
                       />
-                      <strong style={{ color: 'var(--text-parchment)' }}>{curr.name}</strong>
+                      <strong style={{ color: 'var(--text-primary-dark)' }}>{curr.name}</strong>
                     </div>
                     <span style={{ fontFamily: 'var(--font-pirate)', fontSize: '1.5rem', color: 'var(--gold-primary)' }}>
                       {curr.symbol}
@@ -120,13 +120,13 @@ export default function Settings() {
 
           {/* Sound & Audio Effects */}
           <div className="parchment-card">
-            <h3 style={{ fontFamily: 'var(--font-pirate)', fontSize: '1.5rem', color: 'var(--gold-light)', margin: '0 0 1rem 0' }}>
+            <h3 style={{ fontFamily: 'var(--font-pirate)', fontSize: '1.5rem', color: 'var(--text-primary-dark)', margin: '0 0 1rem 0' }}>
               🔊 Sound Synthesis (Web Audio)
             </h3>
             <div className="flex-between align-center" style={{ marginBottom: '1.25rem' }}>
               <div>
-                <strong>Interactive Sound Effects</strong>
-                <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+                <strong style={{ color: 'var(--text-primary-dark)' }}>Interactive Sound Effects</strong>
+                <div style={{ fontSize: '0.82rem', color: 'var(--text-secondary-dark)', marginTop: '2px' }}>
                   Plays coins, settlement fanfares, and ocean notes
                 </div>
               </div>
@@ -139,7 +139,7 @@ export default function Settings() {
               </button>
             </div>
 
-            <div className="form-group">
+            <div className="form-group" style={{ marginBottom: 0 }}>
               <label htmlFor="volume-slider">Volume Level ({Math.round((state.settings.volume || 0.4) * 100)}%)</label>
               <input
                 id="volume-slider"
@@ -156,13 +156,13 @@ export default function Settings() {
 
           {/* Nami's Excessive Debt Warning Threshold */}
           <div className="parchment-card" style={{ marginTop: '1.5rem' }}>
-            <h3 style={{ fontFamily: 'var(--font-pirate)', fontSize: '1.5rem', color: '#e67e22', margin: '0 0 0.5rem 0' }}>
+            <h3 style={{ fontFamily: 'var(--font-pirate)', fontSize: '1.5rem', color: '#b85d10', margin: '0 0 0.5rem 0' }}>
               🍊 Nami's Debt Warning Threshold
             </h3>
-            <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', marginBottom: '1rem' }}>
+            <p style={{ color: 'var(--text-secondary-dark)', fontSize: '0.88rem', marginBottom: '1rem' }}>
               Define the debt threshold that triggers Nami's official "DEBT WARNING" red stamp across the ledger:
             </p>
-            <div className="form-group">
+            <div className="form-group" style={{ marginBottom: 0 }}>
               <label htmlFor="excessive-threshold">Excessive Debt Limit ({state.settings.currency || '฿'})</label>
               <input
                 id="excessive-threshold"
@@ -174,7 +174,7 @@ export default function Settings() {
                 onChange={(e) => handleThresholdChange(e.target.value)}
                 onBlur={handleThresholdBlur}
               />
-              <small style={{ color: 'var(--text-muted)', marginTop: '4px', display: 'block' }}>
+              <small style={{ color: 'var(--text-secondary-dark)', marginTop: '6px', display: 'block' }}>
                 Currently set to {state.settings.currency || '฿'}{state.settings.excessiveThreshold || 1000}. When a pirate owes this amount or more, Nami's warning stamp displays automatically.
               </small>
             </div>
@@ -184,20 +184,20 @@ export default function Settings() {
         {/* RIGHT COLUMN: BENCHMARK & STORAGE MANAGEMENT */}
         <div>
           {/* Straw Hat Test Benchmark */}
-          <div className="parchment-card" style={{ marginBottom: '1.5rem', background: 'linear-gradient(135deg, rgba(212,160,23,0.12), rgba(15,28,49,0.85))' }}>
-            <h3 style={{ fontFamily: 'var(--font-pirate)', fontSize: '1.5rem', color: 'var(--gold-light)', margin: '0 0 0.5rem 0' }}>
+          <div className="card-ocean surface-ocean" style={{ marginBottom: '1.5rem', background: 'linear-gradient(135deg, rgba(212,160,23,0.16), rgba(15,28,49,0.95))', padding: '1.5rem' }}>
+            <h3 style={{ fontFamily: 'var(--font-pirate)', fontSize: '1.5rem', color: 'var(--gold-bright)', margin: '0 0 0.5rem 0' }}>
               🍖 Load Straw Hat Benchmark
             </h3>
-            <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', lineHeight: '1.6', marginBottom: '1.25rem' }}>
+            <p style={{ color: 'var(--text-secondary-light)', fontSize: '0.9rem', lineHeight: '1.6', marginBottom: '1.25rem' }}>
               Instantly sets up the exact benchmark required in Section 21 of the specification:
               <br />
-              • Crew: <strong>Straw Hat Crew</strong>
+              • Crew: <strong style={{ color: 'var(--text-primary-light)' }}>Straw Hat Crew</strong>
               <br />
-              • Members: <strong>Luffy, Zoro, Nami, Sanji</strong>
+              • Members: <strong style={{ color: 'var(--text-primary-light)' }}>Luffy, Zoro, Nami, Sanji</strong>
               <br />
-              • Expense: <strong>Going Merry Dinner (฿1,200)</strong> paid by Luffy
+              • Expense: <strong style={{ color: 'var(--text-primary-light)' }}>Going Merry Dinner (฿1,200)</strong> paid by Luffy
               <br />
-              • Expected: Luffy +฿900, Zoro -฿300, Nami -฿300, Sanji -฿300
+              • Expected: <span style={{ color: 'var(--credit-green)', fontWeight: 'bold' }}>Luffy +฿900</span>, <span style={{ color: 'var(--debt-red)', fontWeight: 'bold' }}>Zoro -฿300</span>, <span style={{ color: 'var(--debt-red)', fontWeight: 'bold' }}>Nami -฿300</span>, <span style={{ color: 'var(--debt-red)', fontWeight: 'bold' }}>Sanji -฿300</span>
             </p>
             <button
               type="button"
@@ -211,10 +211,10 @@ export default function Settings() {
 
           {/* Reset All Data */}
           <div className="parchment-card">
-            <h3 style={{ fontFamily: 'var(--font-pirate)', fontSize: '1.5rem', color: 'var(--debt-red)', margin: '0 0 0.5rem 0' }}>
+            <h3 style={{ fontFamily: 'var(--font-pirate)', fontSize: '1.5rem', color: '#991a1a', margin: '0 0 0.5rem 0' }}>
               ⚠️ Danger Zone: Ledger Reset
             </h3>
-            <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', marginBottom: '1.25rem' }}>
+            <p style={{ color: 'var(--text-secondary-dark)', fontSize: '0.85rem', marginBottom: '1.25rem' }}>
               Clears localStorage and purges all voyages, members, expenses, and transaction logs.
             </p>
             <button

@@ -71,22 +71,22 @@ export default function WantedBoard({ onOpenNewCrewModal }) {
       />
 
       {/* Intro Quote */}
-      <div className="parchment-card" style={{ marginBottom: '1.75rem', textAlign: 'center', background: 'linear-gradient(135deg, rgba(231,76,60,0.1), rgba(15,28,49,0.85))' }}>
-        <h4 style={{ fontFamily: 'var(--font-pirate)', fontSize: '1.4rem', color: 'var(--debt-red)', margin: '0 0 0.4rem 0' }}>
+      <div className="card-ocean surface-ocean" style={{ marginBottom: '1.75rem', textAlign: 'center', background: 'linear-gradient(135deg, rgba(231,76,60,0.18), rgba(15,28,49,0.95))', padding: '1.25rem 1.5rem' }}>
+        <h4 style={{ fontFamily: 'var(--font-pirate)', fontSize: '1.45rem', color: 'var(--debt-red)', margin: '0 0 0.4rem 0' }}>
           ⚠️ "UNPAID BILLS WILL BRING MARINES TO OUR SHORE!"
         </h4>
-        <p style={{ margin: 0, fontSize: '0.88rem', color: 'var(--text-muted)' }}>
+        <p style={{ margin: 0, fontSize: '0.92rem', color: 'var(--text-secondary-light)' }}>
           Nami has issued official bounty notices. Pirates with negative balances are featured on the Wanted Board until their debts are paid to zero.
         </p>
       </div>
 
       {indebtedMembers.length === 0 ? (
-        <div className="parchment-card text-center view-enter" style={{ padding: '3.5rem 1.5rem', marginBottom: '2rem' }}>
+        <div className="card-ocean surface-ocean text-center view-enter" style={{ padding: '3.5rem 1.5rem', marginBottom: '2rem' }}>
           <div style={{ fontSize: '3.5rem', marginBottom: '0.75rem' }}>🎉</div>
           <h3 style={{ fontFamily: 'var(--font-pirate)', fontSize: '2rem', color: 'var(--credit-green)', margin: '0 0 0.5rem 0' }}>
             NO BOUNTIES ACTIVE!
           </h3>
-          <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', maxWidth: '460px', margin: '0 auto 1.5rem auto' }}>
+          <p style={{ color: 'var(--text-secondary-light)', fontSize: '0.95rem', maxWidth: '460px', margin: '0 auto 1.5rem auto' }}>
             Every pirate in the crew has paid their debts. There are zero active bounties on the ship.
           </p>
           <button
@@ -99,7 +99,7 @@ export default function WantedBoard({ onOpenNewCrewModal }) {
         </div>
       ) : (
         <div style={{ marginBottom: '2.5rem' }}>
-          <h3 style={{ fontFamily: 'var(--font-pirate)', fontSize: '1.6rem', color: 'var(--gold-light)', margin: '0 0 1rem 0' }}>
+          <h3 style={{ fontFamily: 'var(--font-pirate)', fontSize: '1.6rem', color: 'var(--gold-bright)', margin: '0 0 1rem 0' }}>
             ☠️ Active Debt Bounties ({indebtedMembers.length})
           </h3>
           <div className="grid grid-3 gap-lg">
@@ -203,7 +203,7 @@ export default function WantedBoard({ onOpenNewCrewModal }) {
       {/* Honorable / Balanced Crew Members */}
       {clearMembers.length > 0 && (
         <div className="parchment-card">
-          <h3 style={{ fontFamily: 'var(--font-pirate)', fontSize: '1.4rem', color: 'var(--gold-light)', margin: '0 0 0.85rem 0' }}>
+          <h3 style={{ fontFamily: 'var(--font-pirate)', fontSize: '1.4rem', color: 'var(--text-primary-dark)', margin: '0 0 0.85rem 0' }}>
             🛡️ Honorable Crew Deckhands (No Active Bounties)
           </h3>
           <div className="grid grid-3 gap-md">
@@ -214,15 +214,15 @@ export default function WantedBoard({ onOpenNewCrewModal }) {
                   key={m.id}
                   className="flex-between align-center"
                   style={{
-                    background: 'rgba(0,0,0,0.2)',
+                    background: 'rgba(122,86,38,0.08)',
                     padding: '0.65rem 0.85rem',
                     borderRadius: '8px',
-                    border: '1px solid rgba(46,204,113,0.3)'
+                    border: '1px solid rgba(46,204,113,0.35)'
                   }}
                 >
                   <div className="flex-row gap-xs align-center">
                     <span>{m.avatar}</span>
-                    <strong>{m.name}</strong>
+                    <strong style={{ color: 'var(--text-primary-dark)' }}>{m.name}</strong>
                   </div>
                   <span className="badge badge-credit">
                     {bal > 0.01 ? `Receives +${formatBeli(bal, currency)}` : 'Square (฿0)'}

@@ -19,7 +19,7 @@ export default function DebtCard({ debt, onSettle }) {
             <span style={{ fontSize: '1.5rem' }}>{debt.fromAvatar || '🏴‍☠️'}</span>
             <div>
               <strong style={{ color: 'var(--debt-red)', fontSize: '1.05rem' }}>{debt.fromName}</strong>
-              <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Owes Debt</div>
+              <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary-dark)' }}>Owes Debt</div>
             </div>
           </div>
 
@@ -31,7 +31,7 @@ export default function DebtCard({ debt, onSettle }) {
             <span style={{ fontSize: '1.5rem' }}>{debt.toAvatar || '👑'}</span>
             <div>
               <strong style={{ color: 'var(--credit-green)', fontSize: '1.05rem' }}>{debt.toName}</strong>
-              <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Collects Share</div>
+              <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary-dark)' }}>Collects Share</div>
             </div>
           </div>
         </div>
@@ -43,7 +43,7 @@ export default function DebtCard({ debt, onSettle }) {
               style={{
                 fontFamily: 'var(--font-pirate)',
                 fontSize: '1.6rem',
-                color: 'var(--gold-light)'
+                color: 'var(--gold-primary)'
               }}
             >
               {formatBeli(debt.amount, currency)}

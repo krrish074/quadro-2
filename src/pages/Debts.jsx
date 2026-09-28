@@ -111,10 +111,10 @@ export default function Debts({ onOpenNewCrewModal }) {
       />
 
       {/* Summary KPI Banner */}
-      <div className="parchment-card" style={{ marginBottom: '1.5rem', background: 'linear-gradient(135deg, rgba(231,76,60,0.1), rgba(15,28,49,0.85))' }}>
+      <div className="card-ocean surface-ocean" style={{ marginBottom: '1.5rem', background: 'linear-gradient(135deg, rgba(231,76,60,0.15), rgba(15,28,49,0.95))', padding: '1.25rem 1.5rem' }}>
         <div className="flex-between align-center flex-wrap gap-md">
           <div>
-            <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Total Pending Crew Obligations</div>
+            <div style={{ fontSize: '0.88rem', color: 'var(--text-secondary-light)' }}>Total Pending Crew Obligations</div>
             <div style={{ fontFamily: 'var(--font-pirate)', fontSize: '2.2rem', color: 'var(--debt-red)' }}>
               {formatBeli(totalOutstanding, currency)}
             </div>
@@ -124,7 +124,7 @@ export default function Debts({ onOpenNewCrewModal }) {
             <span className="badge badge-gold" style={{ fontSize: '0.85rem' }}>
               {debts.length} Bilateral Debts Pending
             </span>
-            <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '0.3rem' }}>
+            <div style={{ fontSize: '0.82rem', color: 'var(--text-muted-light)', marginTop: '0.35rem' }}>
               Conserves ledger: Sum of all credits equals sum of all debits
             </div>
           </div>
@@ -205,7 +205,7 @@ export default function Debts({ onOpenNewCrewModal }) {
                 onChange={(e) => setSettleAmount(e.target.value)}
                 required
               />
-              <small style={{ color: 'var(--text-muted)' }}>
+              <small style={{ color: 'var(--text-secondary-dark)' }}>
                 Full debt: {formatBeli(settlingDebt.amount, currency)} (Partial payment permitted)
               </small>
             </div>
@@ -251,15 +251,15 @@ export default function Debts({ onOpenNewCrewModal }) {
                 key={i}
                 className="flex-between align-center"
                 style={{
-                  background: 'rgba(0,0,0,0.22)',
+                  background: 'rgba(122,86,38,0.08)',
                   padding: '0.6rem 0.85rem',
                   borderRadius: '6px',
                   borderLeft: `3px solid ${src.amount >= 0 ? 'var(--debt-red)' : 'var(--credit-green)'}`
                 }}
               >
                 <div>
-                  <strong>{src.expenseName}</strong>
-                  <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
+                  <strong style={{ color: 'var(--text-primary-dark)' }}>{src.expenseName}</strong>
+                  <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary-dark)' }}>
                     📅 {src.date} {src.category ? `• ${src.category}` : ''}
                   </div>
                 </div>

@@ -87,31 +87,31 @@ export default function Settlements({ onOpenNewCrewModal }) {
       {/* KPI Overview */}
       <div className="grid grid-3 gap-md" style={{ marginBottom: '1.75rem' }}>
         <div className="parchment-card" style={{ textAlign: 'center' }}>
-          <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Required Transfers</div>
+          <div style={{ fontSize: '0.88rem', color: 'var(--text-secondary-dark)', fontWeight: 'bold' }}>Required Transfers</div>
           <div style={{ fontFamily: 'var(--font-pirate)', fontSize: '2.2rem', color: plan.length ? 'var(--debt-red)' : 'var(--credit-green)' }}>
             {plan.length}
           </div>
-          <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+          <div style={{ fontSize: '0.82rem', color: 'var(--text-secondary-dark)' }}>
             {plan.length ? 'Transfers needed to balance' : 'All accounts balanced'}
           </div>
         </div>
 
         <div className="parchment-card" style={{ textAlign: 'center' }}>
-          <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Pending Clearance</div>
+          <div style={{ fontSize: '0.88rem', color: 'var(--text-secondary-dark)', fontWeight: 'bold' }}>Pending Clearance</div>
           <div style={{ fontFamily: 'var(--font-pirate)', fontSize: '2.2rem', color: 'var(--gold-primary)' }}>
             {formatBeli(plan.reduce((s, p) => s + p.amount, 0), currency)}
           </div>
-          <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+          <div style={{ fontSize: '0.82rem', color: 'var(--text-secondary-dark)' }}>
             Minimal total cash flow
           </div>
         </div>
 
         <div className="parchment-card" style={{ textAlign: 'center' }}>
-          <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Historical Settled</div>
+          <div style={{ fontSize: '0.88rem', color: 'var(--text-secondary-dark)', fontWeight: 'bold' }}>Historical Settled</div>
           <div style={{ fontFamily: 'var(--font-pirate)', fontSize: '2.2rem', color: 'var(--credit-green)' }}>
             {formatBeli(totalSettled, currency)}
           </div>
-          <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+          <div style={{ fontSize: '0.82rem', color: 'var(--text-secondary-dark)' }}>
             {settlements.length} transactions executed
           </div>
         </div>
@@ -121,10 +121,10 @@ export default function Settlements({ onOpenNewCrewModal }) {
       <div className="parchment-card" style={{ marginBottom: '2rem' }}>
         <div className="flex-between align-center" style={{ marginBottom: '1.25rem', borderBottom: '1px dashed var(--border-parchment)', paddingBottom: '0.75rem' }}>
           <div>
-            <h3 style={{ fontFamily: 'var(--font-pirate)', fontSize: '1.5rem', color: 'var(--gold-light)', margin: 0 }}>
+            <h3 style={{ fontFamily: 'var(--font-pirate)', fontSize: '1.5rem', color: 'var(--text-primary-dark)', margin: 0 }}>
               ⚡ Optimal Settlement Plan
             </h3>
-            <p style={{ margin: '0.2rem 0 0 0', color: 'var(--text-muted)', fontSize: '0.85rem' }}>
+            <p style={{ margin: '0.2rem 0 0 0', color: 'var(--text-secondary-dark)', fontSize: '0.88rem' }}>
               Minimum number of bilateral payments calculated using greedy matching
             </p>
           </div>
@@ -142,10 +142,10 @@ export default function Settlements({ onOpenNewCrewModal }) {
         {plan.length === 0 ? (
           <div className="text-center" style={{ padding: '2.5rem 1rem' }}>
             <div style={{ fontSize: '3rem', marginBottom: '0.5rem' }}>🎉</div>
-            <h4 style={{ fontFamily: 'var(--font-pirate)', fontSize: '1.6rem', color: 'var(--gold-light)' }}>
+            <h4 style={{ fontFamily: 'var(--font-pirate)', fontSize: '1.6rem', color: 'var(--text-primary-dark)' }}>
               All Voyage Balances are Square!
             </h4>
-            <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', maxWidth: '400px', margin: '0 auto 1.25rem auto' }}>
+            <p style={{ color: 'var(--text-secondary-dark)', fontSize: '0.9rem', maxWidth: '400px', margin: '0 auto 1.25rem auto' }}>
               No pirate owes any Beli. Everyone has contributed their rightful share of expenses.
             </p>
             <button
@@ -167,7 +167,7 @@ export default function Settlements({ onOpenNewCrewModal }) {
                   key={`${item.from}-${item.to}-${index}`}
                   className="flex-between align-center flex-wrap gap-md"
                   style={{
-                    background: 'rgba(0,0,0,0.22)',
+                    background: 'rgba(122,86,38,0.08)',
                     padding: '1rem 1.25rem',
                     borderRadius: '8px',
                     borderLeft: '4px solid var(--gold-primary)'
@@ -180,7 +180,7 @@ export default function Settlements({ onOpenNewCrewModal }) {
                         <strong style={{ fontSize: '1.05rem', color: 'var(--debt-red)' }}>
                           {fromMember ? fromMember.name : 'Pirate'}
                         </strong>
-                        <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Payer / Debtor</div>
+                        <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary-dark)' }}>Payer / Debtor</div>
                       </div>
                     </div>
 
@@ -194,14 +194,14 @@ export default function Settlements({ onOpenNewCrewModal }) {
                         <strong style={{ fontSize: '1.05rem', color: 'var(--credit-green)' }}>
                           {toMember ? toMember.name : 'Pirate'}
                         </strong>
-                        <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Recipient / Creditor</div>
+                        <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary-dark)' }}>Recipient / Creditor</div>
                       </div>
                     </div>
                   </div>
 
                   <div className="flex-row gap-md align-center">
                     <div style={{ textAlign: 'right' }}>
-                      <span style={{ fontFamily: 'var(--font-pirate)', fontSize: '1.75rem', color: 'var(--gold-light)' }}>
+                      <span style={{ fontFamily: 'var(--font-pirate)', fontSize: '1.75rem', color: 'var(--gold-primary)' }}>
                         {formatBeli(item.amount, currency)}
                       </span>
                     </div>
@@ -225,10 +225,10 @@ export default function Settlements({ onOpenNewCrewModal }) {
       <div className="parchment-card">
         <div className="flex-between align-center" style={{ marginBottom: '1.25rem', borderBottom: '1px dashed var(--border-parchment)', paddingBottom: '0.75rem' }}>
           <div>
-            <h3 style={{ fontFamily: 'var(--font-pirate)', fontSize: '1.5rem', color: 'var(--gold-light)', margin: 0 }}>
+            <h3 style={{ fontFamily: 'var(--font-pirate)', fontSize: '1.5rem', color: 'var(--text-primary-dark)', margin: 0 }}>
               📜 Completed Settlement Records
             </h3>
-            <p style={{ margin: '0.2rem 0 0 0', color: 'var(--text-muted)', fontSize: '0.85rem' }}>
+            <p style={{ margin: '0.2rem 0 0 0', color: 'var(--text-secondary-dark)', fontSize: '0.88rem' }}>
               Historical proof of discharge and Bounty clearance receipts
             </p>
           </div>
@@ -236,7 +236,7 @@ export default function Settlements({ onOpenNewCrewModal }) {
         </div>
 
         {settlements.length === 0 ? (
-          <div className="text-center" style={{ padding: '2rem 1rem', color: 'var(--text-muted)' }}>
+          <div className="text-center" style={{ padding: '2rem 1rem', color: 'var(--text-secondary-dark)' }}>
             No settlements recorded yet in this voyage.
           </div>
         ) : (

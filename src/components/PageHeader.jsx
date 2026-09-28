@@ -27,11 +27,11 @@ export default function PageHeader({ icon, title, subtitle, actions }) {
           </div>
         )}
         <div>
-          <h2 className="page-header-title" style={{ fontFamily: 'var(--font-pirate)', fontSize: '2rem', color: 'var(--gold-light)', margin: 0, letterSpacing: '1px' }}>
+          <h2 className="page-header-title" style={{ fontFamily: 'var(--font-pirate)', fontSize: '2rem', color: 'var(--gold-bright)', margin: 0, letterSpacing: '1px' }}>
             {title}
           </h2>
           {subtitle && (
-            <p className="page-header-subtitle" style={{ margin: '0.2rem 0 0 0', color: 'var(--text-muted)', fontSize: '0.95rem' }}>
+            <p className="page-header-subtitle" style={{ margin: '0.2rem 0 0 0', color: 'var(--text-secondary-light)', fontSize: '0.95rem' }}>
               {subtitle}
             </p>
           )}
