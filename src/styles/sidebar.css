@@ -1,0 +1,527 @@
+/* ==========================================================================
+   GRAND LINE LEDGER - Captain's Command Console Sidebar Styles
+   Theme: Nautical Treasure Map + Captain's Command Console + Premium Fintech
+   ========================================================================== */
+
+/* ---------------- Main Sidebar Container ---------------- */
+.sidebar {
+  width: 250px;
+  min-width: 250px;
+  max-width: 250px;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  z-index: 100;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  /* Captain's Console Background: Deep Nautical Navy Gradient */
+  background: linear-gradient(180deg, #071527 0%, #091b33 45%, #05101f 100%);
+  border-right: 1px solid rgba(212, 160, 23, 0.28);
+  box-shadow: 4px 0 28px rgba(0, 0, 0, 0.5);
+
+  padding: 1rem 0.85rem;
+  user-select: none;
+}
+
+/* Antique Gold Custom Scrollbar */
+.sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: rgba(5, 16, 31, 0.7);
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: rgba(212, 160, 23, 0.35);
+  border-radius: 4px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-bright);
+}
+
+/* Subtle Nautical Map / Compass Watermark via Pseudo-element */
+.sidebar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.045;
+  background-image: 
+    /* Compass Rose / Rhumb Lines SVG */
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240' viewBox='0 0 240 240'%3E%3Ccircle cx='120' cy='120' r='100' fill='none' stroke='%23ffcf40' stroke-width='1'/%3E%3Ccircle cx='120' cy='120' r='60' fill='none' stroke='%23ffcf40' stroke-width='0.5' stroke-dasharray='4,4'/%3E%3Cpath d='M120 0 L120 240 M0 120 L240 120 M35 35 L205 205 M35 205 L205 35' stroke='%23ffcf40' stroke-width='0.5'/%3E%3Cpolygon points='120,20 125,115 120,120 115,115' fill='%23ffcf40'/%3E%3Cpolygon points='120,220 125,125 120,120 115,125' fill='%23ffcf40'/%3E%3Cpolygon points='20,120 115,115 120,120 115,125' fill='%23ffcf40'/%3E%3Cpolygon points='220,120 125,115 120,120 125,125' fill='%23ffcf40'/%3E%3C/svg%3E"),
+    /* Nautical Latitude / Grid lines */
+    linear-gradient(rgba(212, 160, 23, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212, 160, 23, 0.1) 1px, transparent 1px);
+  background-size: 240px 240px, 40px 40px, 40px 40px;
+  background-position: center 90px, 0 0, 0 0;
+  background-repeat: no-repeat, repeat, repeat;
+}
+
+/* Faint Ocean Wave Pattern along the bottom */
+.sidebar::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 90px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.035;
+  background-image: radial-gradient(circle at 50% 100%, rgba(255, 207, 64, 0.4) 0%, transparent 70%);
+}
+
+/* Ensure all sidebar content sits above watermarks */
+.sidebar > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------------- 1. BRAND AREA ---------------- */
+.sidebar-brand-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0.15rem 0.2rem 0.45rem 0.2rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 8px;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.sidebar-brand-box:hover {
+  background: rgba(212, 160, 23, 0.06);
+}
+
+.sidebar-emblem-wrapper {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  margin-bottom: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle, rgba(212, 160, 23, 0.2) 0%, rgba(9, 27, 51, 0.8) 75%);
+  border: 1.5px solid rgba(255, 207, 64, 0.5);
+  border-radius: 50%;
+  box-shadow: 0 0 12px rgba(212, 160, 23, 0.25), inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+.sidebar-emblem-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.6));
+}
+
+.sidebar-title-container {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.05;
+}
+
+.sidebar-brand-main {
+  font-family: var(--font-pirate);
+  font-size: 1.7rem;
+  letter-spacing: 2px;
+  color: var(--gold-bright);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(255, 207, 64, 0.3);
+}
+
+.sidebar-brand-sub {
+  font-family: var(--font-pirate);
+  font-size: 1.18rem;
+  letter-spacing: 3.5px;
+  color: #e5d1a5;
+  margin-top: -2px;
+}
+
+/* Tagline Subtitle */
+.sidebar-tagline {
+  margin-top: 0.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  font-family: var(--font-body);
+  font-size: 0.56rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #a48c62;
+  text-transform: uppercase;
+}
+
+/* Gold Rope Separator Underline */
+.sidebar-rope-divider {
+  width: 100%;
+  height: 5px;
+  margin: 0.65rem 0 0.75rem 0;
+  background: 
+    radial-gradient(circle at 50% 50%, rgba(212, 160, 23, 0.5) 1px, transparent 1.5px),
+    linear-gradient(90deg, transparent 5%, rgba(212, 160, 23, 0.4) 30%, rgba(255, 207, 64, 0.7) 50%, rgba(212, 160, 23, 0.4) 70%, transparent 95%);
+  background-size: 8px 5px, 100% 1px;
+  background-repeat: repeat-x, no-repeat;
+  background-position: center, center;
+}
+
+/* ---------------- 2. NAVIGATION MENU & SECTIONS ---------------- */
+.sidebar-nav-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  flex: 1;
+}
+
+.sidebar-section-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0 0.4rem 0.25rem 0.4rem;
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--gold-primary);
+  opacity: 0.85;
+}
+
+.sidebar-section-header-icon {
+  font-size: 0.74rem;
+}
+
+.sidebar-section-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(212, 160, 23, 0.35) 0%, transparent 100%);
+}
+
+.sidebar-section-items {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* Nav Item Link */
+.sidebar-nav-item {
+  display: flex !important;
+  align-items: center;
+  gap: 0.65rem;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.42rem 0.65rem;
+  border-radius: 6px;
+  color: #cfbe99;
+  text-decoration: none;
+  font-size: 0.84rem;
+  font-weight: 600;
+  transition: all 0.18s cubic-bezier(0.2, 0.8, 0.2, 1);
+  white-space: nowrap;
+  position: relative;
+  border-left: 3px solid transparent;
+}
+
+.sidebar-nav-item-icon {
+  font-size: 1.05rem;
+  width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.2s ease;
+}
+
+.sidebar-nav-item-label {
+  flex: 1;
+  letter-spacing: 0.3px;
+}
+
+/* Hover State: Background gradually appears, icon moves 2px */
+.sidebar-nav-item:hover {
+  background: rgba(212, 160, 23, 0.08);
+  color: #fffdf5;
+  border-left-color: rgba(212, 160, 23, 0.4);
+}
+
+.sidebar-nav-item:hover .sidebar-nav-item-icon {
+  transform: translateX(2px);
+}
+
+/* Active State: Parchment/gold tinted background, gold left accent, subtle shadow, icon highlight */
+.sidebar-nav-item.active {
+  background: linear-gradient(90deg, rgba(212, 160, 23, 0.22) 0%, rgba(212, 160, 23, 0.04) 100%);
+  border-left-color: var(--gold-bright);
+  color: var(--gold-bright);
+  font-weight: 700;
+  box-shadow: inset 1px 0 0 rgba(255, 207, 64, 0.35), 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.sidebar-nav-item.active .sidebar-nav-item-icon {
+  transform: translateX(2px);
+  filter: drop-shadow(0 0 6px rgba(255, 207, 64, 0.55));
+}
+
+/* ---------------- 3. ACTIVE VOYAGE CARD ---------------- */
+.sidebar-voyage-card {
+  position: relative;
+  background: linear-gradient(135deg, rgba(19, 49, 92, 0.75) 0%, rgba(8, 22, 42, 0.9) 100%);
+  border: 1px solid rgba(212, 160, 23, 0.35);
+  border-radius: 8px;
+  padding: 0.7rem;
+  margin-top: 0.75rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 207, 64, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+/* Occasional Corner Ornaments on Voyage Card */
+.sidebar-voyage-card::before,
+.sidebar-voyage-card::after {
+  content: '';
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border: 1px solid rgba(255, 207, 64, 0.6);
+  pointer-events: none;
+}
+.sidebar-voyage-card::before {
+  top: 3px;
+  left: 3px;
+  border-right: none;
+  border-bottom: none;
+}
+.sidebar-voyage-card::after {
+  bottom: 3px;
+  right: 3px;
+  border-left: none;
+  border-top: none;
+}
+
+.sidebar-voyage-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 207, 64, 0.25);
+  border-color: rgba(255, 207, 64, 0.45);
+}
+
+/* Top bar: ⚓ ACTIVE VOYAGE + Pulsing Dot */
+.sidebar-voyage-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sidebar-voyage-title {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  color: #e5d1a5;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.sidebar-voyage-status {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  color: #4caf50;
+  text-transform: uppercase;
+}
+
+.sidebar-status-dot {
+  width: 6px;
+  height: 6px;
+  background: #4caf50;
+  border-radius: 50%;
+  box-shadow: 0 0 6px #4caf50;
+  animation: status-pulse 2s infinite ease-in-out;
+}
+
+@keyframes status-pulse {
+  0% { transform: scale(0.9); opacity: 0.8; box-shadow: 0 0 4px #4caf50; }
+  50% { transform: scale(1.2); opacity: 1; box-shadow: 0 0 8px #4caf50; }
+  100% { transform: scale(0.9); opacity: 0.8; box-shadow: 0 0 4px #4caf50; }
+}
+
+/* Crew info row */
+.sidebar-crew-info {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.1rem 0;
+}
+
+.sidebar-crew-logo {
+  font-size: 1.4rem;
+  width: 32px;
+  height: 32px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(212, 160, 23, 0.4);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+  flex-shrink: 0;
+}
+
+.sidebar-crew-details {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.sidebar-crew-name {
+  font-family: var(--font-pirate);
+  font-size: 1.05rem;
+  color: var(--gold-bright);
+  line-height: 1.1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sidebar-crew-count {
+  font-size: 0.68rem;
+  color: #c9b486;
+  margin-top: 1px;
+}
+
+/* Selector select */
+.sidebar-crew-dropdown {
+  width: 100%;
+  padding: 0.32rem 0.45rem;
+  background: #061122;
+  border: 1px solid rgba(212, 160, 23, 0.35);
+  color: #f7eed9;
+  border-radius: 4px;
+  font-size: 0.78rem;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+}
+
+.sidebar-crew-dropdown:focus {
+  border-color: var(--gold-bright);
+}
+
+/* ---------------- 4. NEW VOYAGE BUTTON ---------------- */
+.sidebar-btn-new-voyage {
+  width: 100%;
+  padding: 0.46rem 0.7rem;
+  background: linear-gradient(180deg, #ffcf40 0%, #d9a521 100%);
+  color: #1a0f07;
+  border: 1px solid #7a5626;
+  border-radius: 6px;
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: 0.78rem;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.45);
+  transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.sidebar-btn-new-voyage:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(180deg, #ffe066 0%, #e6b422 100%);
+  box-shadow: 0 4px 14px rgba(255, 207, 64, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  color: #000;
+}
+
+.sidebar-btn-new-voyage:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* ---------------- 5. SOUND CONSOLE CONTROL ---------------- */
+.sidebar-sound-footer {
+  margin-top: 0.65rem;
+  padding-top: 0.6rem;
+  border-top: 1px dashed rgba(212, 160, 23, 0.25);
+}
+
+.sidebar-sound-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.38rem 0.65rem;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(212, 160, 23, 0.25);
+  border-radius: 6px;
+  color: #c9b486;
+  font-size: 0.74rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.sidebar-sound-toggle-btn:hover {
+  background: rgba(212, 160, 23, 0.12);
+  border-color: rgba(212, 160, 23, 0.45);
+  color: #fffdf5;
+}
+
+.sidebar-sound-indicator {
+  display: inline-block;
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  transition: all 0.2s ease;
+}
+
+.sidebar-sound-indicator.on {
+  background: rgba(46, 125, 79, 0.3);
+  color: #4caf50;
+  border: 1px solid rgba(76, 175, 80, 0.4);
+}
+
+.sidebar-sound-indicator.off {
+  background: rgba(158, 26, 26, 0.25);
+  color: #e57373;
+  border: 1px solid rgba(229, 115, 115, 0.35);
+}
+
+/* ---------------- Micro-Interactions & Reduced Motion ---------------- */
+@media (prefers-reduced-motion: reduce) {
+  .sidebar-nav-item,
+  .sidebar-nav-item-icon,
+  .sidebar-voyage-card,
+  .sidebar-btn-new-voyage,
+  .sidebar-status-dot {
+    transition: none !important;
+    transform: none !important;
+    animation: none !important;
+  }
+}

@@ -1,0 +1,125 @@
+/* ==========================================================================
+   GRAND LINE LEDGER - Form & Validation Styles
+   ========================================================================== */
+
+.form-group {
+  margin-bottom: var(--space-md);
+}
+
+label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: var(--space-xs);
+  color: var(--ink-dark);
+  font-size: 0.95rem;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="file"],
+select,
+textarea {
+  width: 100%;
+  padding: 0.55rem 0.75rem;
+  border: 2px solid #8a6a3a;
+  border-radius: var(--radius-sm);
+  background: var(--card-parchment-light);
+  color: var(--ink-dark);
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: all var(--trans-fast);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--gold-primary);
+  box-shadow: 0 0 0 3px rgba(217, 165, 33, 0.25);
+  outline: none;
+}
+
+textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+/* Involved Member Checkbox Chips */
+.chips-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  margin-top: var(--space-xs);
+}
+
+.chip-label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  background: var(--card-parchment-light);
+  border: 1px solid var(--border-parchment);
+  padding: 0.3rem 0.7rem;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  user-select: none;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--ink-dark);
+  transition: all var(--trans-fast);
+}
+
+.chip-label:hover {
+  border-color: var(--gold-primary);
+  background: #fff;
+}
+
+.chip-label input[type="checkbox"] {
+  accent-color: var(--gold-primary);
+}
+
+/* Dynamic Split & Payment Tables */
+.table-box {
+  background: rgba(255, 255, 255, 0.45);
+  border: 1px solid var(--border-parchment);
+  border-radius: var(--radius-sm);
+  padding: var(--space-sm) var(--space-md);
+  margin-top: var(--space-xs);
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.table-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.4rem 0;
+  border-bottom: 1px dashed rgba(122, 86, 38, 0.25);
+}
+
+.table-row:last-child {
+  border-bottom: none;
+}
+
+/* Live Validation Summary */
+.live-validation-box {
+  background: var(--card-parchment-light);
+  border: 2px solid var(--border-parchment);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  font-weight: 700;
+}
+
+.val-status-match {
+  color: var(--green-credit);
+}
+
+.val-status-mismatch {
+  color: var(--red-debt);
+}
+
+.val-errors-list {
+  color: var(--red-debt);
+  font-size: 0.85rem;
+  margin-top: var(--space-xs);
+}

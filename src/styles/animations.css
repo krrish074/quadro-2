@@ -1,0 +1,41 @@
+/* ==========================================================================
+   GRAND LINE LEDGER - Visual Animations
+   ========================================================================== */
+
+.view-enter {
+  animation: view-fade-in 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes view-fade-in {
+  from { opacity: 0; transform: scale(0.98) translateY(12px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.shake-warning {
+  animation: nami-shake 0.5s ease-in-out;
+}
+
+@keyframes nami-shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-8px) rotate(-1deg); }
+  40%, 80% { transform: translateX(8px) rotate(1deg); }
+}
+
+/* Floating Gold Coin Animation */
+.coin-particle {
+  position: fixed;
+  font-size: 1.8rem;
+  z-index: 150;
+  pointer-events: none;
+  animation: coin-fly 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes coin-fly {
+  0% { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 1; }
+  100% { transform: translate(var(--dx), var(--dy)) scale(0.6) rotate(720deg); opacity: 0; }
+}
+
+@keyframes ship-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}

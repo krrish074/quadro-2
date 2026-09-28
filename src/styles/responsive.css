@@ -1,0 +1,166 @@
+/* ==========================================================================
+   GRAND LINE LEDGER - Responsive Styles & Mobile Viewports
+   ========================================================================== */
+
+#bottom-nav {
+  display: none;
+}
+
+/* Tablet (651px to 1024px) - 2 Column Layout */
+@media (max-width: 1024px) and (min-width: 651px) {
+  .app-shell {
+    grid-template-columns: 220px minmax(0, 1fr);
+  }
+
+  .sidebar {
+    width: 220px;
+    min-width: 220px;
+    max-width: 220px;
+    padding: 1rem 0.75rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .two-column {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+/* Mobile & Handhelds (<= 650px) - Single Column */
+@media (max-width: 650px) {
+  .app-shell {
+    display: block;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
+  .sidebar {
+    display: none !important;
+  }
+
+  .main-content {
+    padding: 14px 10px;
+    padding-bottom: 90px; /* Clear mobile bottom navigation bar */
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  .dashboard-wrapper {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  #bottom-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #091a30;
+    border-top: 2px solid var(--gold-primary);
+    overflow-x: auto;
+    z-index: 1000;
+    padding: 6px 0;
+    padding-bottom: max(6px, env(safe-area-inset-bottom, 0px));
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.6);
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #bottom-nav .bottom-nav-btn {
+    flex: 1;
+    min-width: 50px;
+    background: none;
+    border: none;
+    color: #c9b486;
+    padding: 0.35rem 0.15rem;
+    font-size: 0.7rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  #bottom-nav .bottom-nav-btn.active {
+    color: var(--gold-bright);
+    font-weight: 700;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .two-column {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .dashboard-top-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+    gap: 12px;
+  }
+
+  .top-header-right {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .top-header-actions {
+    width: 100%;
+    display: flex;
+    gap: 8px;
+  }
+
+  .top-header-actions .btn {
+    flex: 1;
+    font-size: 0.8rem;
+    padding: 0.4rem;
+  }
+
+  .debt-item-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .debt-item-amount-col {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .quick-actions-button-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .quick-actions-button-group .btn {
+    width: 100%;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,189 @@
+/* ==========================================================================
+   GRAND LINE LEDGER - Global Reset & Typography
+   ========================================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #061325;
+  background-image:
+    /* Layer 1: Distant Celestial Stars */
+    radial-gradient(1px 1px at 25px 35px, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(1.5px 1.5px at 90px 140px, rgba(255, 207, 64, 0.6), transparent),
+    radial-gradient(1px 1px at 180px 80px, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(1px 1px at 280px 220px, rgba(255, 207, 64, 0.5), transparent),
+    radial-gradient(1.5px 1.5px at 360px 110px, rgba(255, 255, 255, 0.65), transparent),
+    /* Layer 2: Nautical Chart Grid Lines (Rhumb / Coordinates) */
+    linear-gradient(rgba(212, 160, 23, 0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212, 160, 23, 0.028) 1px, transparent 1px),
+    /* Layer 3: Ocean Depth Gradients */
+    radial-gradient(circle at 18% 12%, rgba(27, 108, 168, 0.22), transparent 45%),
+    radial-gradient(circle at 82% 35%, rgba(11, 37, 69, 0.45), transparent 55%),
+    radial-gradient(circle at 50% 92%, rgba(19, 49, 92, 0.35), transparent 50%),
+    /* Layer 4: Deep Abyss Base */
+    linear-gradient(180deg, #071527 0%, #05101f 50%, #030a14 100%);
+  background-size:
+    400px 400px,
+    400px 400px,
+    400px 400px,
+    400px 400px,
+    400px 400px,
+    80px 80px,
+    80px 80px,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%;
+  color: #f7eed9;
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Headings */
+h1, h2, h3, h4, .pirate-font {
+  font-family: var(--font-pirate);
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  margin: 0 0 0.5rem 0;
+  color: var(--gold-bright);
+}
+
+h1 { font-size: clamp(2rem, 3.5vw, 2.8rem); line-height: 1.1; }
+h2 { font-size: clamp(1.5rem, 2.5vw, 2rem); color: var(--ink-dark); }
+h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); color: var(--ink-dark); }
+
+p {
+  margin: 0 0 0.8rem 0;
+}
+
+a {
+  color: var(--gold-primary);
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 3px solid var(--gold-bright);
+  outline-offset: 2px;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-ocean-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-parchment);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--gold-primary);
+}
+
+/* Utility Classes */
+.pos { color: var(--green-credit) !important; font-weight: 700; }
+.neg { color: var(--red-debt) !important; font-weight: 700; }
+.text-gold { color: var(--gold-bright) !important; }
+.text-muted { color: var(--ink-muted) !important; }
+.text-center { text-align: center; }
+
+.flex-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.gap-xs { gap: var(--space-xs); }
+.gap-sm { gap: var(--space-sm); }
+.gap-md { gap: var(--space-md); }
+.gap-lg { gap: var(--space-lg); }
+
+/* Grid Utilities */
+.grid {
+  display: grid;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+@media (max-width: 850px) {
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Layout Containers */
+#root {
+  min-height: 100vh;
+  width: 100%;
+}
+
+.app-shell, .app-layout {
+  display: grid;
+  grid-template-columns: 250px minmax(0, 1fr);
+  min-height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.main-content, .main-content-deck {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  padding: 32px;
+  max-width: none;
+  margin: 0;
+  box-sizing: border-box;
+}
